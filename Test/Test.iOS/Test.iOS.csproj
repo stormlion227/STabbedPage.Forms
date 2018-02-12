@@ -123,6 +123,16 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\STabbedPage\STabbedPage.iOS\STabbedPage.iOS.csproj">
+      <Project>{5fb4449d-47c5-4f00-a7bc-8d3956974bd9}</Project>
+      <Name>STabbedPage.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\..\STabbedPage\STabbedPage\STabbedPage.csproj">
+      <Project>{e4cee042-4c2b-46a8-a8dc-7578e590ac0f}</Project>
+      <Name>STabbedPage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Test\Test.csproj">
       <Project>{1A8156FF-171B-4464-AF1F-F2051038E611}</Project>
       <Name>Test</Name>
