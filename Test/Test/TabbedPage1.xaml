@@ -3,7 +3,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:stab="clr-namespace:Stormlion.STabbedPage;assembly=Stormlion.STabbedPage"
                   x:Class="Test.TabbedPage1"
-                  TabBarPosition="Bottom"
+                  TabBarPosition="Top"
                   >
     <stab:STabbedPage.TabBarCellTemplate>
         <DataTemplate>
@@ -27,14 +27,14 @@
         </DataTemplate>
     </stab:STabbedPage.TabBarSelectedCellTemplate>
     <ContentPage Title="Tab 1"
-                 BackgroundColor="Yellow"
-                 >
+            BackgroundColor="Yellow"
+            >
         <ContentPage.Content>
             <StackLayout>
-                <Label Text="{Binding Title}"
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="CenterAndExpand"
-                       />
+                <Label Text="Page 1"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                />
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>

@@ -93,31 +93,47 @@ namespace Stormlion.STabbedPage.Droid
         protected override void OnLayout(bool changed, int l, int t, int r, int b)
         {
             TabBar.Visibility = Android.Views.ViewStates.Gone;
-
-            base.OnLayout(changed, l, t, r, b - (int)((Element as STabbedPage).TabBarHeight * Context.Resources.DisplayMetrics.Density));
+            //base.OnLayout(changed, l, t, r, b - (int)((Element as STabbedPage).TabBarHeight * Context.Resources.DisplayMetrics.Density));
+            base.OnLayout(changed, l, t, r, b);
 
             if ((Element as STabbedPage).TabBarPosition == STabbedPage.TabBarPositionType.Top)
             {
-                Pager.Layout(0,
-                    (int)((Element as STabbedPage).TabBarHeight * Context.Resources.DisplayMetrics.Density),
-                    r,
-                    b);
+                foreach(Page p in Element.Children)
+                {
+                    p.ContainerArea = new Rectangle(
+                        0,
+                        (Element as STabbedPage).TabBarHeight,
+                        Context.FromPixels(r - l),
+                        Context.FromPixels(b - t) - (Element as STabbedPage).TabBarHeight
+                        );
+                }
+
                 Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(
                     _tabBarRenderer.Element,
                     new Rectangle(
-                        0,
-                        0,
-                        Context.FromPixels(r),
+                        l,
+                        t,
+                        Context.FromPixels(r - l),
                         (Element as STabbedPage).TabBarHeight));
             }
             else
             {
+                foreach (Page p in Element.Children)
+                {
+                    p.ContainerArea = new Rectangle(
+                        0,
+                        0,
+                        Context.FromPixels(r - l),
+                        Context.FromPixels(b - t) - (Element as STabbedPage).TabBarHeight
+                        );
+                }
+
                 Xamarin.Forms.Layout.LayoutChildIntoBoundingRegion(
                     _tabBarRenderer.Element,
                     new Rectangle(
-                        0,
-                        Context.FromPixels(b) - (Element as STabbedPage).TabBarHeight,
-                        Context.FromPixels(r),
+                        l,
+                        Context.FromPixels(b - t) - (Element as STabbedPage).TabBarHeight,
+                        Context.FromPixels(r - l),
                         (Element as STabbedPage).TabBarHeight));
             }
 
