@@ -1,5 +1,4 @@
-﻿
-using Stormlion.STabbedPage;
+﻿using Stormlion.STabbedPage;
 using Stormlion.STabbedPage.iOS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
