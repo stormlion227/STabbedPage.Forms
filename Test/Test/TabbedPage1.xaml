@@ -2,12 +2,14 @@
 <stab:STabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:stab="clr-namespace:Stormlion.STabbedPage;assembly=Stormlion.STabbedPage"
+                  Title="Customizable TabbedPage"
                   x:Class="Test.TabbedPage1"
                   TabBarPosition="Top"
+                  TopBarHeight="0"
                   >
     <stab:STabbedPage.TabBarCellTemplate>
         <DataTemplate>
-            <Grid>
+            <Grid BackgroundColor="White">
                 <Label Text="{Binding Title}"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"
@@ -27,18 +29,19 @@
         </DataTemplate>
     </stab:STabbedPage.TabBarSelectedCellTemplate>
     <ContentPage Title="Tab 1"
-            BackgroundColor="Yellow"
-            >
+                 BackgroundColor="Yellow"
+                 >
         <ContentPage.Content>
             <StackLayout>
                 <Label Text="Page 1"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                />
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand"
+                       />
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="Tab 2"
+                 BackgroundColor="LightGreen"
                  >
         <ContentPage.Content>
             <StackLayout>
@@ -50,6 +53,7 @@
         </ContentPage.Content>
     </ContentPage>
     <ContentPage Title="Tab 3"
+                 BackgroundColor="LightBlue"
                  >
         <ContentPage.Content>
             <StackLayout>

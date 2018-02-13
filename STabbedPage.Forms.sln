@@ -7,17 +7,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Android", "Test\Test.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.iOS", "Test\Test.iOS\Test.iOS.csproj", "{E820EFAA-8862-4995-B10E-68B4C1AA9506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test\Test.csproj", "{9A5A7D37-9F55-4971-8B53-D677ABA9DBA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test\Test.csproj", "{9A5A7D37-9F55-4971-8B53-D677ABA9DBA9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{5A4D0CC5-B6DB-4BE2-8C99-E1E10101FD69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STabbedPage", "STabbedPage\STabbedPage\STabbedPage.csproj", "{E4CEE042-4C2B-46A8-A8DC-7578E590AC0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STabbedPage", "STabbedPage\STabbedPage\STabbedPage.csproj", "{E4CEE042-4C2B-46A8-A8DC-7578E590AC0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STabbedPage.Android", "STabbedPage\STabbedPage.Android\STabbedPage.Android.csproj", "{F5DD4C82-FC0B-44A0-BC81-99AA9255B0BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STabbedPage.iOS", "STabbedPage\STabbedPage.iOS\STabbedPage.iOS.csproj", "{5FB4449D-47C5-4F00-A7BC-8D3956974BD9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{ACF02388-CD34-4CCB-9EF6-B48C3E9513D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DEC38C11-3475-4D6D-9697-2A3AC8275AFA}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		nuget.nuspec = nuget.nuspec
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
