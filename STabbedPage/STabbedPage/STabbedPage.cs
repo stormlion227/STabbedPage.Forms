@@ -7,6 +7,20 @@ namespace Stormlion.STabbedPage
 {
     public class STabbedPage : TabbedPage
     {
+        public enum TabBarPositionType
+        {
+            Top,
+            Bottom
+        };
+
+        public static readonly BindableProperty TabBarPositionProperty = BindableProperty.Create(
+            nameof(TabBarPosition),
+            typeof(TabBarPositionType),
+            typeof(STabbedPage),
+            TabBarPositionType.Top
+            );
+        public TabBarPositionType TabBarPosition { get => (TabBarPositionType)GetValue(TabBarPositionProperty); set => SetValue(TabBarPositionProperty, value); }
+
         public static readonly BindableProperty TabCellProperty = BindableProperty.CreateAttached(
             "TabCell",
             typeof(View),
@@ -28,7 +42,7 @@ namespace Stormlion.STabbedPage
             nameof(SplitterWidth),
             typeof(double),
             typeof(STabbedPage),
-            1
+            1.0
             );
         public double SplitterWidth { get => (double)GetValue(SplitterWidthProperty); set => SetValue(SplitterWidthProperty, value); }
 
@@ -44,7 +58,7 @@ namespace Stormlion.STabbedPage
             nameof(TopBarHeight),
             typeof(double),
             typeof(STabbedPage),
-            1
+            1.0
             );
         public double TopBarHeight { get => (double)GetValue(TopBarHeightProperty); set => SetValue(TopBarHeightProperty, value); }
 
@@ -60,7 +74,7 @@ namespace Stormlion.STabbedPage
             nameof(BottomBarHeight),
             typeof(double),
             typeof(STabbedPage),
-            1
+            1.0
             );
         public double BottomBarHeight { get => (double)GetValue(BottomBarHeightProperty); set => SetValue(BottomBarHeightProperty, value); }
 
@@ -68,7 +82,7 @@ namespace Stormlion.STabbedPage
             nameof(TabBarHeight),
             typeof(double),
             typeof(STabbedPage),
-            70
+            70.0
             );
         public double TabBarHeight { get => (double)GetValue(TabBarHeightProperty); set => SetValue(TabBarHeightProperty, value); }
 
@@ -119,6 +133,8 @@ namespace Stormlion.STabbedPage
                 gridTabs.Children.Add(GetTabCell(page), i, 0);
                 i++;
             }
+
+            _tabBarView.Children.Add(gridTabs, 0, 1);
         }
 
         public Grid TabBarView
@@ -130,7 +146,5 @@ namespace Stormlion.STabbedPage
                 return _tabBarView;
             }
         }
-
-
     }
 }

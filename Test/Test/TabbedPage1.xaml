@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<stab:STabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:stab="clr-namespace:Stormlion.STabbedPage;assembly=Stormlion.STabbedPage"
+                  x:Class="Test.TabbedPage1"
+                  TabBarPosition="Top"
+                  >
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="Tab 1"
+                 BackgroundColor="Yellow"
+                 >
+        <stab:STabbedPage.TabCell>
+            <BoxView BackgroundColor="LightBlue"
+                     />
+        </stab:STabbedPage.TabCell>
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="Page 1"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand"
+                       />
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Tab 2"
+                 >
+        <stab:STabbedPage.TabCell>
+            <BoxView BackgroundColor="LightYellow"
+                     />
+        </stab:STabbedPage.TabCell>
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="Page 2"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand"
+                       />
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Tab 3"
+                 >
+        <stab:STabbedPage.TabCell>
+            <BoxView BackgroundColor="LightGreen"
+                     />
+        </stab:STabbedPage.TabCell>
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="Page 3"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand"
+                       />
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</stab:STabbedPage>
