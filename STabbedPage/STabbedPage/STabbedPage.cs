@@ -21,14 +21,13 @@ namespace Stormlion.STabbedPage
             );
         public TabBarPositionType TabBarPosition { get => (TabBarPositionType)GetValue(TabBarPositionProperty); set => SetValue(TabBarPositionProperty, value); }
 
-        public static readonly BindableProperty TabCellProperty = BindableProperty.CreateAttached(
-            "TabCell",
-            typeof(View),
-            typeof(Page),
-            null
+
+        public static readonly BindableProperty TabBarCellTemplateProperty = BindableProperty.Create(
+            nameof(TabBarCellTemplateProperty),
+            typeof(DataTemplate),
+            typeof(STabbedPage)
             );
-        public static View GetTabCell(BindableObject page) => (View)page.GetValue(TabCellProperty);
-        public static void SetTabCell(BindableObject page, View view) => page.SetValue(TabCellProperty, view);
+        public DataTemplate TabBarCellTemplate { get => (DataTemplate)GetValue(TabBarCellTemplateProperty); set => SetValue(TabBarCellTemplateProperty, value); }
 
         public static readonly BindableProperty SplitterColorProperty = BindableProperty.Create(
             nameof(SplitterColor),
@@ -124,13 +123,29 @@ namespace Stormlion.STabbedPage
                 ColumnSpacing = 0
             };
             int i = 0;
-            foreach(Page page in Children)
+            foreach (Page page in Children)
             {
+                if (i > 0 && SplitterWidth > 0)
+                {
+                    gridTabs.ColumnDefinitions.Add(new ColumnDefinition
+                    {
+                        Width = new GridLength(SplitterWidth, GridUnitType.Absolute)
+                    });
+                    gridTabs.Children.Add(new BoxView
+                    {
+                        BackgroundColor = SplitterColor
+                    }, 2 * i - 1, 0);
+                }
+
                 gridTabs.ColumnDefinitions.Add(new ColumnDefinition
                 {
                     Width = new GridLength(1, GridUnitType.Star)
                 });
-                gridTabs.Children.Add(GetTabCell(page), i, 0);
+
+                View cell = (View)TabBarCellTemplate.CreateContent();
+                cell.BindingContext = page.BindingContext == null ? page : page.BindingContext;
+
+                gridTabs.Children.Add(cell, 2 * i, 0);
                 i++;
             }
 

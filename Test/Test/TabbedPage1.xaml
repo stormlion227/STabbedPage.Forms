@@ -5,17 +5,20 @@
                   x:Class="Test.TabbedPage1"
                   TabBarPosition="Top"
                   >
+    <stab:STabbedPage.TabBarCellTemplate>
+        <DataTemplate>
+            <Grid>
+                <Label Text="{Binding Title}" />
+            </Grid>
+        </DataTemplate>
+    </stab:STabbedPage.TabBarCellTemplate>
     <!--Pages can be added as references or inline-->
     <ContentPage Title="Tab 1"
                  BackgroundColor="Yellow"
                  >
-        <stab:STabbedPage.TabCell>
-            <BoxView BackgroundColor="LightBlue"
-                     />
-        </stab:STabbedPage.TabCell>
         <ContentPage.Content>
             <StackLayout>
-                <Label Text="Page 1"
+                <Label Text="{Binding Title}"
                        VerticalOptions="CenterAndExpand" 
                        HorizontalOptions="CenterAndExpand"
                        />
@@ -24,10 +27,6 @@
     </ContentPage>
     <ContentPage Title="Tab 2"
                  >
-        <stab:STabbedPage.TabCell>
-            <BoxView BackgroundColor="LightYellow"
-                     />
-        </stab:STabbedPage.TabCell>
         <ContentPage.Content>
             <StackLayout>
                 <Label Text="Page 2"
@@ -39,10 +38,6 @@
     </ContentPage>
     <ContentPage Title="Tab 3"
                  >
-        <stab:STabbedPage.TabCell>
-            <BoxView BackgroundColor="LightGreen"
-                     />
-        </stab:STabbedPage.TabCell>
         <ContentPage.Content>
             <StackLayout>
                 <Label Text="Page 3"
