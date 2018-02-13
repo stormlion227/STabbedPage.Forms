@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Stormlion.STabbedPage
@@ -23,11 +24,18 @@ namespace Stormlion.STabbedPage
 
 
         public static readonly BindableProperty TabBarCellTemplateProperty = BindableProperty.Create(
-            nameof(TabBarCellTemplateProperty),
+            nameof(TabBarCellTemplate),
             typeof(DataTemplate),
             typeof(STabbedPage)
             );
         public DataTemplate TabBarCellTemplate { get => (DataTemplate)GetValue(TabBarCellTemplateProperty); set => SetValue(TabBarCellTemplateProperty, value); }
+
+        public static readonly BindableProperty TabBarSelectedCellTemplateProperty = BindableProperty.Create(
+            nameof(TabBarSelectedCellTemplate),
+            typeof(DataTemplate),
+            typeof(STabbedPage)
+            );
+        public DataTemplate TabBarSelectedCellTemplate { get => (DataTemplate)GetValue(TabBarSelectedCellTemplateProperty); set => SetValue(TabBarSelectedCellTemplateProperty, value); }
 
         public static readonly BindableProperty SplitterColorProperty = BindableProperty.Create(
             nameof(SplitterColor),
@@ -87,6 +95,9 @@ namespace Stormlion.STabbedPage
 
         protected Grid _tabBarView = null;
 
+        protected List<View> cells;
+        protected List<View> selectedCells;
+
         protected void createTabBar()
         {
             _tabBarView = new Grid
@@ -118,6 +129,12 @@ namespace Stormlion.STabbedPage
                 BackgroundColor = BottomBarColor
             }, 0, 2);
 
+            cells = new List<View>();
+            if(TabBarSelectedCellTemplate != null)
+            {
+                selectedCells = new List<View>();
+            }
+
             Grid gridTabs = new Grid()
             {
                 ColumnSpacing = 0
@@ -125,7 +142,7 @@ namespace Stormlion.STabbedPage
             int i = 0;
             foreach (Page page in Children)
             {
-                if (i > 0 && SplitterWidth > 0)
+                if (i > 0)
                 {
                     gridTabs.ColumnDefinitions.Add(new ColumnDefinition
                     {
@@ -144,12 +161,28 @@ namespace Stormlion.STabbedPage
 
                 View cell = (View)TabBarCellTemplate.CreateContent();
                 cell.BindingContext = page.BindingContext == null ? page : page.BindingContext;
-
+                cell.GestureRecognizers.Add(new TapGestureRecognizer {
+                    CommandParameter = cell,
+                    Command = SelectCellCommand
+                });
                 gridTabs.Children.Add(cell, 2 * i, 0);
+                cells.Add(cell);
+
+                if(TabBarSelectedCellTemplate != null)
+                {
+                    View selectedCell = (View)TabBarSelectedCellTemplate.CreateContent();
+                    selectedCell.BindingContext = cell.BindingContext;
+                    selectedCell.IsVisible = false;
+                    gridTabs.Children.Add(selectedCell, 2 * i, 0);
+                    selectedCells.Add(selectedCell);
+                }
+
                 i++;
             }
 
             _tabBarView.Children.Add(gridTabs, 0, 1);
+
+            OnCurrentPageChanged();
         }
 
         public Grid TabBarView
@@ -161,5 +194,27 @@ namespace Stormlion.STabbedPage
                 return _tabBarView;
             }
         }
+
+        protected override void OnCurrentPageChanged()
+        {
+            base.OnCurrentPageChanged();
+
+            if (selectedCells == null)
+                return;
+
+            for(int i=0; i<Children.Count; i++)
+            {
+                cells[i].IsVisible = Children[i] != CurrentPage;
+                selectedCells[i].IsVisible = !cells[i].IsVisible;
+            }
+        }
+
+        protected ICommand SelectCellCommand => new Command((v) =>
+        {
+            int index = cells.IndexOf((View)v);
+            if (index < 0)
+                return;
+            CurrentPage = Children[index];
+        });
     }
 }

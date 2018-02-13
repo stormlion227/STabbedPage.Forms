@@ -3,16 +3,29 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:stab="clr-namespace:Stormlion.STabbedPage;assembly=Stormlion.STabbedPage"
                   x:Class="Test.TabbedPage1"
-                  TabBarPosition="Top"
+                  TabBarPosition="Bottom"
                   >
     <stab:STabbedPage.TabBarCellTemplate>
         <DataTemplate>
             <Grid>
-                <Label Text="{Binding Title}" />
+                <Label Text="{Binding Title}"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       />
             </Grid>
         </DataTemplate>
     </stab:STabbedPage.TabBarCellTemplate>
-    <!--Pages can be added as references or inline-->
+    <stab:STabbedPage.TabBarSelectedCellTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Orange">
+                <Label Text="{Binding Title}"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       TextColor="White"
+                       />
+            </Grid>
+        </DataTemplate>
+    </stab:STabbedPage.TabBarSelectedCellTemplate>
     <ContentPage Title="Tab 1"
                  BackgroundColor="Yellow"
                  >
