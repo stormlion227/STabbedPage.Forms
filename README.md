@@ -102,13 +102,13 @@ In AppDelegate.cs file
 ```
 
 ### Properties
-* TabBarPosition ( Top or Bottom )
-* TabBarCellTemplate
-* TabBarSelectedCellTemplate
-* TabBarHeight
-* SplitterColor and SplitterWidth
-* TopBarColor and TopBarHeight
-* BottomBarColor and BottomBarHeight
+* **TabBarPosition** ( Top or Bottom )
+* **TabBarCellTemplate**
+* **TabBarSelectedCellTemplate**
+* **TabBarHeight**
+* **SplitterColor** and **SplitterWidth**
+* **TopBarColor** and **TopBarHeight**
+* **BottomBarColor** and **BottomBarHeight**
 
 ## Contributions
 Contributions are welcome!
