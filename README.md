@@ -41,6 +41,8 @@ In AppDelegate.cs file
 			  TabBarPosition="Top"
 			  TopBarHeight="0"
 			  >
+		
+		<!-- Cell Template -->
 		<stab:STabbedPage.TabBarCellTemplate>
 			<DataTemplate>
 				<Grid BackgroundColor="White">
@@ -51,6 +53,8 @@ In AppDelegate.cs file
 				</Grid>
 			</DataTemplate>
 		</stab:STabbedPage.TabBarCellTemplate>
+		
+		<!-- Selected Cell Template -->
 		<stab:STabbedPage.TabBarSelectedCellTemplate>
 			<DataTemplate>
 				<Grid BackgroundColor="Orange">
@@ -62,6 +66,8 @@ In AppDelegate.cs file
 				</Grid>
 			</DataTemplate>
 		</stab:STabbedPage.TabBarSelectedCellTemplate>
+		
+		<!-- Pages -->
 		<ContentPage Title="Tab 1"
 			     BackgroundColor="Yellow"
 			     >
